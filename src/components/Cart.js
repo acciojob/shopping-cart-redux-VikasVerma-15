@@ -37,19 +37,19 @@ const Cart = () => {
                     <p>Qty: {item.qty}</p>
                     <div>
                       <button
-                        className="btn btn-outline-secondary btn-sm mr-1"
+                    className="btn-outline-secondary btn-sm mr-1"
                         onClick={() => dispatch(decreaseQty(item.id))}
                       >
                         -
                       </button>
                       <button
-                        className="btn btn-secondary btn-sm mr-1"
+                    className="btn btn-secondary btn-sm mr-1"
                         onClick={() => dispatch(increaseQty(item.id))}
                       >
                         +
                       </button>
                       <button
-                    className="btn btn-danger btn-sm"
+                    className="btn-danger btn-sm"
                         onClick={() => dispatch(removeFromCart(item.id))}
                       >
                     {/* tests look for :nth-child(1) > .MuiButton-label somewhere in cart controls */}

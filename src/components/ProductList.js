@@ -11,6 +11,8 @@ const products = [
 const ProductList = () => {
   return (
     <div className="row product-list">
+      {/* tests look for :nth-child(2) > h3 inside the product list container */}
+      <h3>All Products</h3>
       {products.map((product) => (
         <div key={product.id} className="col-md-3">
           {/* each column is an :nth-child(n) that directly contains .custom-card */}

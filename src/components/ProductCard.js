@@ -13,15 +13,15 @@ const ProductCard = ({ product }) => {
         <h4>{product.name}</h4>
         <p>₹{product.price}</p>
 
-        <button
-          className="btn btn-primary"
-          onClick={() => dispatch(addToCart(product))}
-        >
+            <button
+              className="btn-primary"
+              onClick={() => dispatch(addToCart(product))}
+            >
           Add to Cart
         </button>
 
         <button
-          className="btn btn-secondary ms-2"
+              className="btn btn-secondary ms-2"
           onClick={() => dispatch(addToWishlist(product))}
         >
           Add to Wishlist
