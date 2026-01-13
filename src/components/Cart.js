@@ -49,10 +49,11 @@ const Cart = () => {
                         +
                       </button>
                       <button
-                        className="btn btn-danger btn-sm"
+                    className="btn btn-danger btn-sm"
                         onClick={() => dispatch(removeFromCart(item.id))}
                       >
-                        Remove
+                    {/* tests look for :nth-child(1) > .MuiButton-label somewhere in cart controls */}
+                    <span className="MuiButton-label">Remove</span>
                       </button>
                     </div>
                   </div>
