@@ -1,32 +1,20 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { addToCart } from '../features/cart/cartSlice'
-import { addToWishlist } from '../features/wishlist/wishlistSlice'
+import React from "react";
+import ProductCard from "./ProductCard";
 
-const demoProducts = [
-  { id: 1, name: 'Product A', price: 100 },
-  { id: 2, name: 'Product B', price: 250 },
-  { id: 3, name: 'Product C', price: 400 },
-]
+const products = [
+  { id: 1, name: "Product 1", price: 100 },
+  { id: 2, name: "Product 2", price: 200 },
+  { id: 3, name: "Product 3", price: 300 },
+];
 
 const ProductList = () => {
-  const dispatch = useDispatch()
-
   return (
-    <div>
-      <h2>Products</h2>
-      {demoProducts.map(p => (
-        <div key={p.id} style={{ marginBottom: '10px' }}>
-          <span>{p.name}</span>
-          <span> - ₹{p.price}</span>
-          <button onClick={() => dispatch(addToCart(p))}>Add to Cart</button>
-          <button onClick={() => dispatch(addToWishlist(p))}>
-            Add to Wishlist
-          </button>
-        </div>
+    <div className="row">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ProductList
+export default ProductList;

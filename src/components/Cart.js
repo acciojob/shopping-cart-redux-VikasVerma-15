@@ -1,58 +1,59 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
+  removeFromCart,
   increaseQty,
   decreaseQty,
-  removeFromCart,
-  clearCart,
-} from '../features/cart/cartSlice'
-import { removeFromWishlist } from '../features/wishlist/wishlistSlice'
-import { removeCoupon } from '../features/coupon/couponSlice'
+} from "../features/cart/cartSlice";
 
 const Cart = () => {
-  const dispatch = useDispatch()
-  const items = useSelector(state => state.cart.items)
-  const coupon = useSelector(state => state.coupon)
+  const { items } = useSelector((state) => state.cart);
+  const { discount } = useSelector((state) => state.coupon);
+  const dispatch = useDispatch();
 
-  const subtotal = items.reduce((sum, itm) => sum + itm.price * itm.qty, 0)
-  const discount = (subtotal * coupon.discountPercent) / 100
-  const total = subtotal - discount
+  const total = items.reduce(
+    (sum, item) => sum + item.price * item.qty,
+    0
+  );
+
+  const finalTotal = total - discount;
 
   return (
     <div>
-      <h2>Cart</h2>
-      {items.length === 0 && <p>No items in cart.</p>}
-      {items.map(item => (
-        <div key={item.id} style={{ marginBottom: '10px' }}>
-          <span>{item.name}</span>
-          <span> - ₹{item.price}</span>
-          <span> x {item.qty}</span>
-          <button onClick={() => dispatch(increaseQty(item.id))}>+</button>
-          <button onClick={() => dispatch(decreaseQty(item.id))}>-</button>
-          <button onClick={() => dispatch(removeFromCart(item.id))}>
-            Remove
-          </button>
+      <h4>Cart</h4>
+      {items.map((item) => (
+        <div key={item.id} className="custom-card card">
+          <div className="card-body">
+            <p>{item.name}</p>
+            <p>Qty: {item.qty}</p>
+
+            <button
+              className="btn"
+              onClick={() => dispatch(increaseQty(item.id))}
+            >
+              +
+            </button>
+
+            <button
+              className="btn"
+              onClick={() => dispatch(decreaseQty(item.id))}
+            >
+              -
+            </button>
+
+            <button
+              className="btn"
+              onClick={() => dispatch(removeFromCart(item.id))}
+            >
+              Remove
+            </button>
+          </div>
         </div>
       ))}
 
-      {items.length > 0 && (
-        <>
-          <hr />
-          <p>Subtotal: ₹{subtotal}</p>
-          {coupon.code && (
-            <p>
-              Coupon {coupon.code}: -₹{discount} (
-              {coupon.discountPercent}
-              %)
-              <button onClick={() => dispatch(removeCoupon())}>Remove</button>
-            </p>
-          )}
-          <p>Total: ₹{total}</p>
-          <button onClick={() => dispatch(clearCart())}>Clear Cart</button>
-        </>
-      )}
+      <h5>Total: ₹{finalTotal}</h5>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

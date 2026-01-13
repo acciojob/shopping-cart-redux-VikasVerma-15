@@ -1,28 +1,29 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import {
-  removeFromWishlist,
-} from '../features/wishlist/wishlistSlice'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromWishlist } from "../features/wishlist/wishlistSlice";
 
 const Wishlist = () => {
-  const dispatch = useDispatch()
-  const items = useSelector(state => state.wishlist.items)
+  const items = useSelector((state) => state.wishlist.items);
+  const dispatch = useDispatch();
 
   return (
     <div>
-      <h2>Wishlist</h2>
-      {items.length === 0 && <p>No items in wishlist.</p>}
-      {items.map(item => (
-        <div key={item.id} style={{ marginBottom: '10px' }}>
-          <span>{item.name}</span>
-          <span> - ₹{item.price}</span>
-          <button onClick={() => dispatch(removeFromWishlist(item.id))}>
-            Remove
-          </button>
+      <h4>Wishlist</h4>
+      {items.map((item) => (
+        <div key={item.id} className="custom-card card">
+          <div className="card-body">
+            <p>{item.name}</p>
+            <button
+              className="btn"
+              onClick={() => dispatch(removeFromWishlist(item.id))}
+            >
+              Remove
+            </button>
+          </div>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Wishlist
+export default Wishlist;

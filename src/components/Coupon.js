@@ -1,36 +1,26 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { applyCoupon } from '../features/coupon/couponSlice'
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { applyCoupon } from "../features/coupon/couponSlice";
 
 const Coupon = () => {
-  const [code, setCode] = useState('')
-  const [percent, setPercent] = useState(0)
-  const dispatch = useDispatch()
-
-  const handleApply = () => {
-    if (!code || percent <= 0) return
-    dispatch(applyCoupon({ code, discountPercent: Number(percent) }))
-    setCode('')
-    setPercent(0)
-  }
+  const [code, setCode] = useState("");
+  const dispatch = useDispatch();
 
   return (
-    <div style={{ marginTop: '20px' }}>
-      <h3>Apply Coupon</h3>
+    <div>
       <input
-        placeholder="Code"
+        placeholder="Enter coupon"
         value={code}
-        onChange={e => setCode(e.target.value)}
+        onChange={(e) => setCode(e.target.value)}
       />
-      <input
-        placeholder="Discount %"
-        type="number"
-        value={percent}
-        onChange={e => setPercent(e.target.value)}
-      />
-      <button onClick={handleApply}>Apply</button>
+      <button
+        className="btn"
+        onClick={() => dispatch(applyCoupon(code))}
+      >
+        Apply Coupon
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default Coupon
+export default Coupon;
