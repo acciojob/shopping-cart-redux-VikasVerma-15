@@ -14,8 +14,15 @@ const Coupon = () => {
         onChange={(e) => setCode(e.target.value)}
       />
       <button
-        className="btn"
-        onClick={() => dispatch(applyCoupon(code))}
+        className="btn btn-success ms-2"
+        onClick={() =>
+          dispatch(
+            applyCoupon({
+              code,
+              discountPercent: code.trim().toLowerCase() === "save10" ? 10 : 0,
+            })
+          )
+        }
       >
         Apply Coupon
       </button>

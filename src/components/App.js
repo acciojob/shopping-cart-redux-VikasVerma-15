@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import ProductList from "./ProductList";
 import Cart from "./Cart";
 import Wishlist from "./Wishlist";
+import Coupon from "./Coupon";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Navbar />
 
       <div className="container mt-4">
+        <Coupon />
         <ProductList />
         <Cart />
         <Wishlist />

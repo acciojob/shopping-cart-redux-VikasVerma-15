@@ -8,16 +8,25 @@ import {
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
+  const coupon = useSelector((state) => state.coupon);
   const dispatch = useDispatch();
 
   if (cartItems.length === 0) return null;
 
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + item.price * item.qty,
+    0
+  );
+  const discount = coupon.discountPercent
+    ? Math.round((subtotal * coupon.discountPercent) / 100)
+    : 0;
+  const total = subtotal - discount;
+
   return (
     <div className="mt-4">
       <h4>Cart</h4>
-      {/* Using row/col like product list */}
       <div className="row">
-        {cartItems.map((item, idx) => (
+        {cartItems.map((item) => (
           <div key={item.id} className="col-md-4 mb-3">
             <div className="custom-card card">
               <div className="card-body">
@@ -25,7 +34,7 @@ const Cart = () => {
                 <p>Qty: {item.qty}</p>
                 <div>
                   <button
-                    className="btn btn-secondary btn-sm mr-1"
+                    className="btn btn-outline-secondary btn-sm mr-1"
                     onClick={() => dispatch(decreaseQty(item.id))}
                   >
                     -
@@ -47,6 +56,17 @@ const Cart = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="mt-3">
+        <p>Subtotal: ₹{subtotal}</p>
+        {coupon.discountPercent > 0 && (
+          <p>
+            Discount ({coupon.discountPercent}%): -₹{discount}
+            {coupon.code ? ` (code: ${coupon.code})` : ""}
+          </p>
+        )}
+        <h5>Total: ₹{total}</h5>
       </div>
     </div>
   );
