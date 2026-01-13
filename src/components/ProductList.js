@@ -9,9 +9,9 @@ const products = [
 
 const ProductList = () => {
   return (
-    <div className="row">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+    <div>
+      {products.map((p) => (
+        <ProductCard key={p.id} product={p} />
       ))}
     </div>
   );

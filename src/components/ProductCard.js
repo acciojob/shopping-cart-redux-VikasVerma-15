@@ -7,26 +7,26 @@ const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="col-md-4">
-      <div className="custom-card card">
-        <div className="card-body">
-          <h5>{product.name}</h5>
-          <p>₹{product.price}</p>
+    <div className="custom-card">
+      <div className="card-body">
+        <h4>{product.name}</h4>
+        <p>{product.price}</p>
 
-          <button
-            className="btn btn-primary"
-            onClick={() => dispatch(addToCart(product))}
-          >
-            Add to Cart
-          </button>
+        {/* FIRST BUTTON */}
+        <button
+          className="btn"
+          onClick={() => dispatch(addToCart(product))}
+        >
+          Add to Cart
+        </button>
 
-          <button
-            className="btn"
-            onClick={() => dispatch(addToWishlist(product))}
-          >
-            Wishlist
-          </button>
-        </div>
+        {/* SECOND BUTTON */}
+        <button
+          className="btn"
+          onClick={() => dispatch(addToWishlist(product))}
+        >
+          Wishlist
+        </button>
       </div>
     </div>
   );

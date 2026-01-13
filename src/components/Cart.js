@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   removeFromCart,
   increaseQty,
@@ -7,51 +7,33 @@ import {
 } from "../features/cart/cartSlice";
 
 const Cart = () => {
-  const { items } = useSelector((state) => state.cart);
-  const { discount } = useSelector((state) => state.coupon);
+  const items = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
-
-  const total = items.reduce(
-    (sum, item) => sum + item.price * item.qty,
-    0
-  );
-
-  const finalTotal = total - discount;
 
   return (
     <div>
-      <h4>Cart</h4>
       {items.map((item) => (
-        <div key={item.id} className="custom-card card">
+        <div key={item.id} className="custom-card">
           <div className="card-body">
-            <p>{item.name}</p>
-            <p>Qty: {item.qty}</p>
+            <h4>{item.name}</h4>
+            <p>{item.qty}</p>
 
-            <button
-              className="btn"
-              onClick={() => dispatch(increaseQty(item.id))}
-            >
+            {/* ONLY ONE + BUTTON */}
+            <button onClick={() => dispatch(increaseQty(item.id))}>
               +
             </button>
 
-            <button
-              className="btn"
-              onClick={() => dispatch(decreaseQty(item.id))}
-            >
+            {/* ONLY ONE - BUTTON */}
+            <button onClick={() => dispatch(decreaseQty(item.id))}>
               -
             </button>
 
-            <button
-              className="btn"
-              onClick={() => dispatch(removeFromCart(item.id))}
-            >
+            <button onClick={() => dispatch(removeFromCart(item.id))}>
               Remove
             </button>
           </div>
         </div>
       ))}
-
-      <h5>Total: ₹{finalTotal}</h5>
     </div>
   );
 };
