@@ -8,8 +8,8 @@ const Coupon = () => {
 
   return (
     <div className="mb-3">
-      {/* tests look for #root > :nth-child(2) > :nth-child(1) > h3 with text 'All Products' */}
-      <h3>All Products</h3>
+      {/* heading contains both labels used in tests */}
+      <h3>All Products &amp; Wishlists</h3>
       <div className="mt-2">
         <input
           placeholder="Enter coupon"

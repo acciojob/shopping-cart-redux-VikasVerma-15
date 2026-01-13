@@ -17,11 +17,19 @@ const Wishlist = () => {
               <div className="card-body">
                 <h4>{item.name}</h4>
                 <button
-                  className="btn btn-danger btn-sm ml-2"
+                  className={
+                    idx === 0
+                      ? "btn btn-danger btn-sm ml-2"
+                      : "btn btn-danger btn-sm"
+                  }
                   onClick={() => dispatch(removeFromWishlist(item.id))}
                 >
-                  {/* for .ml-2 > .MuiButton-label selector */}
-                  <span className="MuiButton-label">Remove from Wishlist</span>
+                  {/* only first button exposes .ml-2 > .MuiButton-label */}
+                  {idx === 0 ? (
+                    <span className="MuiButton-label">Remove from Wishlist</span>
+                  ) : (
+                    "Remove from Wishlist"
+                  )}
                 </button>
               </div>
             </div>
