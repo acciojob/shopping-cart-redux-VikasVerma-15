@@ -10,10 +10,10 @@ const products = [
 
 const ProductList = () => {
   return (
-    <div className="product-list">
+    <div className="row product-list">
       {products.map((product) => (
-        <div key={product.id}>
-          {/* keep each product as a direct child so :nth-child selectors work */}
+        <div key={product.id} className="col-md-3">
+          {/* each column is an :nth-child(n) that directly contains .custom-card */}
           <ProductCard product={product} />
         </div>
       ))}

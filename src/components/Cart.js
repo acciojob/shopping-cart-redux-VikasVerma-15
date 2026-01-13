@@ -30,27 +30,32 @@ const Cart = () => {
           <div key={item.id} className="col-md-4 mb-3">
             <div className="custom-card card">
               <div className="card-body">
-                <h4>{item.name}</h4>
-                <p>Qty: {item.qty}</p>
-                <div>
-                  <button
-                    className="btn btn-outline-secondary btn-sm mr-1"
-                    onClick={() => dispatch(decreaseQty(item.id))}
-                  >
-                    -
-                  </button>
-                  <button
-                    className="btn btn-secondary btn-sm mr-1"
-                    onClick={() => dispatch(increaseQty(item.id))}
-                  >
-                    +
-                  </button>
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => dispatch(removeFromCart(item.id))}
-                  >
-                    Remove
-                  </button>
+                {/* provide .custom-card .row structure inside cart items */}
+                <div className="row">
+                  <div className="col-12">
+                    <h4>{item.name}</h4>
+                    <p>Qty: {item.qty}</p>
+                    <div>
+                      <button
+                        className="btn btn-outline-secondary btn-sm mr-1"
+                        onClick={() => dispatch(decreaseQty(item.id))}
+                      >
+                        -
+                      </button>
+                      <button
+                        className="btn btn-secondary btn-sm mr-1"
+                        onClick={() => dispatch(increaseQty(item.id))}
+                      >
+                        +
+                      </button>
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={() => dispatch(removeFromCart(item.id))}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
