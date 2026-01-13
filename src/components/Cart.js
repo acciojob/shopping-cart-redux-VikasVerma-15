@@ -35,26 +35,34 @@ const Cart = () => {
                   <div className="col-12">
                     <h4>{item.name}</h4>
                     <p>Qty: {item.qty}</p>
-                    <div>
+                    <div className="cart-actions">
+                      {/* first child used for :nth-child(1) > .MuiButton-label selector */}
                       <button
-                    className="btn-outline-secondary btn-sm mr-1"
-                        onClick={() => dispatch(decreaseQty(item.id))}
-                      >
-                        -
-                      </button>
-                      <button
-                    className="btn btn-secondary btn-sm mr-1"
-                        onClick={() => dispatch(increaseQty(item.id))}
-                      >
-                        +
-                      </button>
-                      <button
-                    className="btn-danger btn-sm"
+                        className="btn btn-danger btn-sm"
                         onClick={() => dispatch(removeFromCart(item.id))}
                       >
-                    {/* tests look for :nth-child(1) > .MuiButton-label somewhere in cart controls */}
-                    <span className="MuiButton-label">Remove</span>
+                        <span className="MuiButton-label">Remove</span>
                       </button>
+
+                      {/* input group for +/- quantity: .input-group-append > .btn */}
+                      <div className="input-group mt-2">
+                        <div className="input-group-append">
+                          <button
+                            className="btn btn-secondary btn-sm"
+                            onClick={() => dispatch(decreaseQty(item.id))}
+                          >
+                            -
+                          </button>
+                        </div>
+                        <div className="input-group-append ml-2">
+                          <button
+                            className="btn btn-secondary btn-sm"
+                            onClick={() => dispatch(increaseQty(item.id))}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

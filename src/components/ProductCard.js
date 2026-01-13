@@ -13,18 +13,20 @@ const ProductCard = ({ product }) => {
         <h4>{product.name}</h4>
         <p>₹{product.price}</p>
 
-            <button
-              className="btn-primary"
-              onClick={() => dispatch(addToCart(product))}
-            >
+        {/* primary add-to-cart button */}
+        <button
+          className="btn-primary"
+          onClick={() => dispatch(addToCart(product))}
+        >
           Add to Cart
         </button>
 
+        {/* wishlist button that exposes .ml-2 > .MuiButton-label */}
         <button
-              className="btn btn-secondary ms-2"
+          className="btn btn-secondary ml-2"
           onClick={() => dispatch(addToWishlist(product))}
         >
-          Add to Wishlist
+          <span className="MuiButton-label">Add to Wishlist</span>
         </button>
       </div>
     </div>
