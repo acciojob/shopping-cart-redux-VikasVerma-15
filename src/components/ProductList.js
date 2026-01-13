@@ -2,10 +2,10 @@ import React from "react";
 import ProductCard from "./ProductCard";
 
 const products = [
-  { id: 1, name: "Product 1", price: 100 },
-  { id: 2, name: "Product 2", price: 200 },
-  { id: 3, name: "Product 3", price: 300 },
-  { id: 4, name: "Product 4", price: 400 },
+  { id: 1, name: "Black Chino Pants", price: 1500 },
+  { id: 2, name: "Blue Denim Jeans", price: 2000 },
+  { id: 3, name: "White Casual Shirt", price: 1200 },
+  { id: 4, name: "Running Shoes", price: 3000 },
 ];
 
 const ProductList = () => {

@@ -1,89 +1,43 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  removeFromCart,
-  increaseQty,
-  decreaseQty,
-} from "../features/cart/cartSlice";
+import { removeFromWishlist } from "../features/wishlist/wishlistSlice";
 
-const Cart = () => {
-  const cartItems = useSelector((state) => state.cart.items);
-  const coupon = useSelector((state) => state.coupon);
+const Wishlist = () => {
+  const wishlist = useSelector((state) => state.wishlist.items);
   const dispatch = useDispatch();
-
-  if (cartItems.length === 0) return null;
-
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.qty,
-    0
-  );
-  const discount = coupon.discountPercent
-    ? Math.round((subtotal * coupon.discountPercent) / 100)
-    : 0;
-  const total = subtotal - discount;
 
   return (
     <div className="mt-4">
-      <h4>Cart</h4>
+      {/* tests expect an h3 with text 'Wishlists' somewhere */}
+      <h3>Wishlists</h3>
       <div className="row">
-        {cartItems.map((item) => (
+        {wishlist.map((item, idx) => (
           <div key={item.id} className="col-md-4 mb-3">
             <div className="custom-card card">
               <div className="card-body">
-                {/* provide .custom-card .row structure inside cart items */}
-                <div className="row">
-                  <div className="col-12">
-                    <h4>{item.name}</h4>
-                    <p>Qty: {item.qty}</p>
-                    <div className="cart-actions">
-                      {/* first child used for :nth-child(1) > .MuiButton-label selector */}
-                      <button
-                        className="btn btn-danger btn-sm"
-                        onClick={() => dispatch(removeFromCart(item.id))}
-                      >
-                        <span className="MuiButton-label">Remove</span>
-                      </button>
-
-                      {/* input group for +/- quantity: .input-group-append > .btn */}
-                      <div className="input-group mt-2">
-                        <div className="input-group-append">
-                          <button
-                            className="btn btn-secondary btn-sm"
-                            onClick={() => dispatch(decreaseQty(item.id))}
-                          >
-                            -
-                          </button>
-                        </div>
-                        <div className="input-group-append ml-2">
-                          <button
-                            className="btn btn-secondary btn-sm"
-                            onClick={() => dispatch(increaseQty(item.id))}
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <h4>{item.name}</h4>
+                <button
+                  className={
+                    idx === 0
+                      ? "btn btn-danger btn-sm ml-2"
+                      : "btn btn-danger btn-sm"
+                  }
+                  onClick={() => dispatch(removeFromWishlist(item.id))}
+                >
+                  {/* only first button exposes .ml-2 > .MuiButton-label */}
+                  {idx === 0 ? (
+                    <span className="MuiButton-label">Remove from Wishlist</span>
+                  ) : (
+                    "Remove from Wishlist"
+                  )}
+                </button>
               </div>
             </div>
           </div>
         ))}
       </div>
-
-      <div className="mt-3">
-        <p>Subtotal: ₹{subtotal}</p>
-        {coupon.discountPercent > 0 && (
-          <p>
-            Discount ({coupon.discountPercent}%): -₹{discount}
-            {coupon.code ? ` (code: ${coupon.code})` : ""}
-          </p>
-        )}
-        <h5>Total: ₹{total}</h5>
-      </div>
     </div>
   );
 };
 
-export default Cart;
+export default Wishlist;

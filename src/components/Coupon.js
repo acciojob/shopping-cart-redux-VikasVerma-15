@@ -9,7 +9,7 @@ const Coupon = () => {
   return (
     <div className="mb-3">
       {/* heading contains both labels used in tests */}
-      <h3>All Products &amp; Wishlists</h3>
+      {/* <h3>All Products &amp; Wishlists</h3> */}
       <div className="mt-2">
         <input
           placeholder="Enter coupon"

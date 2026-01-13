@@ -9,6 +9,7 @@ const App = () => {
   return (
     <>
       <Navbar />
+      <h3>All Products & Wishlists</h3>
 
       <div className="container mt-4">
         <Coupon />
@@ -19,6 +20,7 @@ const App = () => {
     </>
   );
 };
+
 
 export default App;
 
