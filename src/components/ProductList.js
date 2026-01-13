@@ -10,17 +10,13 @@ const products = [
 
 const ProductList = () => {
   return (
-    <div className="product-list">
-      {/* tests look for #root > :nth-child(2) > :nth-child(2) > .row */}
-      <div className="row">
-        {products.map((product) => (
-          <div key={product.id} className="col-md-3">
-            {/* each column is an :nth-child(n) that directly contains .custom-card */}
-            <ProductCard product={product} />
-          </div>
-        ))}
-      </div>
-    </div>
+    <>
+      {products.map((product) => (
+        <div key={product.id} className="col-md-3">
+          <ProductCard product={product} />
+        </div>
+      ))}
+    </>
   );
 };
 

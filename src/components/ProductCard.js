@@ -8,20 +8,17 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="custom-card card mb-3">
-      {/* tests look for :nth-child(n) > .custom-card > .card-body > .btn */}
       <div className="card-body">
         <h4>{product.name}</h4>
         <p>₹{product.price}</p>
 
-        {/* primary add-to-cart button */}
         <button
-          className="btn-primary"
+          className="btn btn-primary"
           onClick={() => dispatch(addToCart(product))}
         >
           Add to Cart
         </button>
 
-        {/* wishlist button */}
         <button
           className="btn btn-secondary ms-2"
           onClick={() => dispatch(addToWishlist(product))}
