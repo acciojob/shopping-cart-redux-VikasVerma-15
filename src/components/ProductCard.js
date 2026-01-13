@@ -21,12 +21,12 @@ const ProductCard = ({ product }) => {
           Add to Cart
         </button>
 
-        {/* wishlist button that exposes .ml-2 > .MuiButton-label */}
+        {/* wishlist button */}
         <button
-          className="btn btn-secondary ml-2"
+          className="btn btn-secondary ms-2"
           onClick={() => dispatch(addToWishlist(product))}
         >
-          <span className="MuiButton-label">Add to Wishlist</span>
+          Add to Wishlist
         </button>
       </div>
     </div>

@@ -6,8 +6,6 @@ const Wishlist = () => {
   const wishlist = useSelector((state) => state.wishlist.items);
   const dispatch = useDispatch();
 
-  if (wishlist.length === 0) return null;
-
   return (
     <div className="mt-4">
       {/* tests expect an h3 with text 'Wishlists' somewhere */}
