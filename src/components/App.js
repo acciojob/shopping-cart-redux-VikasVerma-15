@@ -1,20 +1,22 @@
 import React from "react";
+import Navbar from "./Navbar";
 import ProductList from "./ProductList";
 import Cart from "./Cart";
 import Wishlist from "./Wishlist";
 
-function App() {
+const App = () => {
   return (
-    <div>
+    <>
       <Navbar />
-      <div className="container mt-3">
-        {/* Simple one-page layout: products, cart, wishlist */}
+
+      <div className="container mt-4">
         <ProductList />
         <Cart />
         <Wishlist />
       </div>
-    </div>
+    </>
   );
-}
+};
 
 export default App;
+

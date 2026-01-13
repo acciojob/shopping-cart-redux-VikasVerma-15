@@ -7,25 +7,23 @@ const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="custom-card">
+    <div className="custom-card card">
       <div className="card-body">
         <h4>{product.name}</h4>
-        <p>{product.price}</p>
+        <p>₹{product.price}</p>
 
-        {/* FIRST BUTTON */}
         <button
-          className="btn"
+          className="btn btn-primary"
           onClick={() => dispatch(addToCart(product))}
         >
           Add to Cart
         </button>
 
-        {/* SECOND BUTTON */}
         <button
-          className="btn"
+          className="btn btn-secondary ms-2"
           onClick={() => dispatch(addToWishlist(product))}
         >
-          Wishlist
+          Add to Wishlist
         </button>
       </div>
     </div>
