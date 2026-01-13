@@ -3,16 +3,18 @@ import ProductList from "./ProductList";
 import Cart from "./Cart";
 import Wishlist from "./Wishlist";
 
-const App = () => {
+function App() {
   return (
     <div>
-      <h3>Shopping Cart</h3>
-
-      <ProductList />
-      <Cart />
-      <Wishlist />
+      <Navbar />
+      <div className="container mt-3">
+        {/* Simple one-page layout: products, cart, wishlist */}
+        <ProductList />
+        <Cart />
+        <Wishlist />
+      </div>
     </div>
   );
-};
+}
 
 export default App;

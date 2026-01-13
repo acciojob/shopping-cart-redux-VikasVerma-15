@@ -2,8 +2,11 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
-      <h3 className="text-center w-100">Shopping Cart</h3>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      {/* first child inside navbar-expand-lg */}
+      <div className="text-center mx-auto w-100">
+        <h3>Shopping Cart</h3>
+      </div>
     </nav>
   );
 };
