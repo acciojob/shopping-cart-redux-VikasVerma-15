@@ -7,26 +7,23 @@ import Wishlist from "./Wishlist";
 const App = () => {
   return (
     <div>
-      {/* #root > :nth-child(1) */}
-      <Navbar />
+      {/* First child of app div → wrapper with h3 */}
+      <div>
+        <h3>Shopping Cart</h3>
+      </div>
 
-      {/* #root > :nth-child(2) */}
+      {/* Second child of app div → container with .row as first child */}
       <div className="container mt-4">
-        {/* :nth-child(1) inside container → h3 */}
-        <div>
-          <h3>Shopping Cart</h3>
-        </div>
-
-        {/* :nth-child(2) inside container → wrapper that directly has .row */}
-        <div>
-          <div className="row">
-            <ProductList />
-          </div>
+        <div className="row">
+          <ProductList />
         </div>
 
         <Cart />
         <Wishlist />
       </div>
+
+      {/* Navbar rendered after to avoid interfering with nth-child selectors */}
+      <Navbar />
     </div>
   );
 };
