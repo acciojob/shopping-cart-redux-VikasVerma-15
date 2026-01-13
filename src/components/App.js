@@ -1,11 +1,17 @@
-
-import React from "react";
-import './../styles/App.css';
+import React from 'react'
+import ProductList from './ProductList'
+import Cart from './Cart'
+import Wishlist from './Wishlist'
+import Coupon from './Coupon'
 
 const App = () => {
   return (
     <div>
-        {/* Do not remove the main div */}
+      <h1>Shopping Cart Application</h1>
+      <ProductList />
+      <Cart />
+      <Wishlist />
+      <Coupon />
     </div>
   )
 }
